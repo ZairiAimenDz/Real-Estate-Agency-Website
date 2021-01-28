@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using REstate.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,13 @@ namespace REstate.Pages
         {
             _logger = logger;
         }
+
+        [BindProperty(SupportsGet =true)]
+        public SaleType stype { get; set; }
+        [BindProperty(SupportsGet =true)]
+        public PropertyType ptype { get; set; }
+        [BindProperty(SupportsGet =true)]
+        public int Bedrooms{ get; set; }
 
         public void OnGet()
         {

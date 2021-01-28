@@ -3,23 +3,39 @@
 @{
     ViewData["Title"] = "Home page";
 }
+
+<!-- Hero Section -->
 <style>
     .glassback {
-        background: rgba( 255, 255, 255, 0.70 );
+        background: rgba( 255, 255, 255, 0.80 );
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-        backdrop-filter: blur( 7.0px );
-        -webkit-backdrop-filter: blur( 7.0px );
         border-radius: 10px;
     }
 </style>
-<div style="background-image:url('images/homeimage.jpg')">
+<div class="mb-5" style="background-image:url('images/homeimage.jpg')">
     <div class="container text-center" style="display:flex; height:80vh;">
         <div class="p-4 glassback w-75 mx-auto my-auto" style="align-self:center">
             <h3 class="mb-3 font-weight-bold">Trouvez le meilleur choix pour vous</h3>
             <form method="get">
                 <div class="form-row">
-                    <div class="col-md-9">
-                        <input class="form-control" type="text" name="Search" value="" placeholder="Rechercher ....." />
+                    <div class="col-md-3">
+                        <select class="form-control" asp-items="@Html.GetEnumSelectList<REstate.Models.SaleType>()" asp-for="stype" type="text" name="Search" value="" placeholder="Rechercher ....."></select>
+                    </div>
+                    <div class="col-md-3 mt-md-0 mt-2">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-home"></i></div>
+                            </div>
+                            <select asp-for="ptype" asp-items="@Html.GetEnumSelectList<REstate.Models.PropertyType>()" class="form-control" placeholder="Type"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-md-0 mt-2">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-bed"></i></div>
+                            </div>
+                            <input asp-for="Bedrooms" type="number" min="0" class="form-control" placeholder="NbChambre">
+                        </div>
                     </div>
                     <div class="col-md-3 mt-md-0 mt-2">
                         <input class="btn btn-outline-primary w-100" type="submit" name="Seach" value="Search" />
@@ -27,5 +43,31 @@
                 </div>
             </form>
         </div>
+    </div>
+</div>
+
+
+
+<div class="container py-3 mt-5 mb-5">
+    <h3>Dernière publication</h3>
+    <div class="row">
+        @for (int i = 0; i < 9; i++)
+        {
+            <div class="col-md-4 col-sm-6">
+                <a href="#"class="m-2" style="text-decoration:none">
+                    <div class="shadow">
+                        <div class="bg-dark rounded-top" style="background-image:url('images/prop.png');background-position:center;height:14em;background-size:cover;width:100%">
+                            <div class="h-100 w-100 px-3 py-2" style="display:flex;flex-direction:column;">
+                                <div class="mb-auto"><span class="badge badge-success p-2">Rent</span></div>
+                                <div><span class="badge badge-info p-2">1.2 Milliard DA</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-secondary rounded-bottom text-white px-3 py-2">
+                            Bir El Djir, Oran, Algeria
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
     </div>
 </div>
