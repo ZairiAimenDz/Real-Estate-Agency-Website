@@ -3,8 +3,29 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .glassback {
+        background: rgba( 255, 255, 255, 0.70 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 7.0px );
+        -webkit-backdrop-filter: blur( 7.0px );
+        border-radius: 10px;
+    }
+</style>
+<div style="background-image:url('images/homeimage.jpg')">
+    <div class="container text-center" style="display:flex; height:80vh;">
+        <div class="p-4 glassback w-75 mx-auto my-auto" style="align-self:center">
+            <h3 class="mb-3 font-weight-bold">Trouvez le meilleur choix pour vous</h3>
+            <form method="get">
+                <div class="form-row">
+                    <div class="col-md-9">
+                        <input class="form-control" type="text" name="Search" value="" placeholder="Rechercher ....." />
+                    </div>
+                    <div class="col-md-3 mt-md-0 mt-2">
+                        <input class="btn btn-outline-primary w-100" type="submit" name="Seach" value="Search" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
