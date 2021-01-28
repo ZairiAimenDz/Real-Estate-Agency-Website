@@ -27,7 +27,12 @@ namespace REstate.Pages
 
         public void OnGet()
         {
+            
+        }
 
+        public IActionResult OnPost()
+        {
+            return RedirectToPage("/List",new {stype=stype,ptype=ptype,Bedrooms=Bedrooms });
         }
     }
 }

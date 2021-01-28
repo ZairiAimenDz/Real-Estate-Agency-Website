@@ -15,6 +15,7 @@ namespace REstate.Models
         public bool PrivatePost { get; set; }
         [Required]
         public string Title { get; set; }
+        public PropertyType propertyType { get; set; }
 
         [Required]
         public int Etages { get; set; }
@@ -51,6 +52,7 @@ namespace REstate.Models
 
     public enum PropertyType
     {
+        All,
         Villa,
         Appartement,
         LotdeTerrain,
@@ -75,6 +77,7 @@ namespace REstate.Models
 
     public enum SaleType
     {
+        All,
         Sale,
         Rent
     }

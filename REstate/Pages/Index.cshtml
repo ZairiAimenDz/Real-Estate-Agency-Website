@@ -14,9 +14,9 @@
 </style>
 <div class="mb-5" style="background-image:url('images/homeimage.jpg')">
     <div class="container text-center" style="display:flex; height:80vh;">
-        <div class="p-4 glassback w-75 mx-auto my-auto" style="align-self:center">
+        <div class="p-4 glassback w-100 mx-auto" style="align-self:center">
             <h3 class="mb-3 font-weight-bold">Trouvez le meilleur choix pour vous</h3>
-            <form method="get">
+            <form method="post">
                 <div class="form-row">
                     <div class="col-md-3">
                         <select class="form-control" asp-items="@Html.GetEnumSelectList<REstate.Models.SaleType>()" asp-for="stype" type="text" name="Search" value="" placeholder="Rechercher ....."></select>
@@ -62,7 +62,7 @@
                                 <div><span class="badge badge-info p-2">1.2 Milliard DA</span></div>
                             </div>
                         </div>
-                        <div class="bg-secondary rounded-bottom text-white px-3 py-2">
+                        <div class="rounded-bottom text-white px-3 py-2" style="background:rgba(0, 54, 217, 0.67);">
                             Bir El Djir, Oran, Algeria
                         </div>
                     </div>

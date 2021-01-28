@@ -3,21 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using REstate.Data;
 
 namespace REstate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210128185848_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -219,110 +221,6 @@ namespace REstate.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("REstate.Models.Property", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Adresse")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Ascenceur")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Bathrooms")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Bedrooms")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Climatisation")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("ConnectionInternet")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Etages")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Furniture")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Garage")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Jardain")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MainThumbnail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Parking")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("PaymentDuration")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<int>("PriceAmmount")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("PrivatePost")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("SaleType")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Security")
-                        .HasColumnType("bit");
-
-                    b.Property<double>("Surface")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TransportProche")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("WashRooms")
-                        .HasColumnType("int");
-
-                    b.Property<int>("propertyType")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Property");
-                });
-
-            modelBuilder.Entity("REstate.Models.PropertyImage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ImageFile")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("PropertyID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PropertyID");
-
-                    b.ToTable("PropertyImage");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -372,22 +270,6 @@ namespace REstate.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("REstate.Models.PropertyImage", b =>
-                {
-                    b.HasOne("REstate.Models.Property", "Property")
-                        .WithMany("PropertyImages")
-                        .HasForeignKey("PropertyID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Property");
-                });
-
-            modelBuilder.Entity("REstate.Models.Property", b =>
-                {
-                    b.Navigation("PropertyImages");
                 });
 #pragma warning restore 612, 618
         }

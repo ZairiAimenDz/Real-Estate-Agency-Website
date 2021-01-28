@@ -1,0 +1,168 @@
+﻿@page
+@model REstate.Pages.ListModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].PrivatePost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Etages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].SaleType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].PriceAmmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].PaymentDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Bedrooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Bathrooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].WashRooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Surface)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Adresse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Furniture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Jardain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].TransportProche)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Parking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Climatisation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].ConnectionInternet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Security)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Garage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].Ascenceur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property[0].MainThumbnail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Property) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrivatePost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaleType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceAmmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bedrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bathrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WashRooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surface)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Furniture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jardain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransportProche)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Climatisation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConnectionInternet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Security)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Garage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ascenceur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MainThumbnail)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
