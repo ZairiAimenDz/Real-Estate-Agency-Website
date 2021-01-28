@@ -28,6 +28,8 @@ namespace REstate.Pages
         [BindProperty(SupportsGet = true)]
         public int PageNum { get; set; } = 0;
 
+        public readonly int EPP = 12;
+
         public IList<Property> Property { get;set; }
 
         public async Task OnGetAsync()
@@ -45,7 +47,7 @@ namespace REstate.Pages
             {
                 querry = querry.Where(p => p.Bedrooms >= Bedrooms);
             }
-            Property = await querry.OrderBy(p=>p.DateAdded).Skip(12*PageNum).Take(12).ToListAsync();
+            Property = await querry.OrderBy(p=>p.DateAdded).Skip(12*PageNum).Take(EPP).ToListAsync();
         }
     }
 }

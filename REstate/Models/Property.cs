@@ -71,14 +71,14 @@ namespace REstate.Models
         ParJour,
         ParMois,
         ParAnnee,
-        UneFois,
-        ParTranches
+        PayementUneFois,
+        PayementParTranches
     }
 
     public enum SaleType
     {
         All,
-        Sale,
-        Rent
+        vente,
+        location
     }
 }

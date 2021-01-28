@@ -1,0 +1,113 @@
+﻿@page
+@model REstate.Pages.Admin.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <h1>List Of All Properties</h1>
+
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Property[0].PrivatePost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Property[0].Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Property[0].propertyType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Property[0].Etages)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Property[0].SaleType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Property[0].Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Property[0].Surface)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Property[0].Adresse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Property[0].MainThumbnail)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Property)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrivatePost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.propertyType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Etages)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SaleType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                        @Html.DisplayFor(modelItem => item.PriceAmmount)
+                        @Html.DisplayFor(modelItem => item.PaymentDuration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surface)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adresse)
+                    </td>
+                    <td>
+                        <img src="@item.MainThumbnail" height="64" />
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                        <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.ID">Details</a> 
+                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <div class="mt-4 pt-2 pb-4">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                @if (Model.PageNum != 0)
+                {
+                    <li class="page-item"><a class="page-link" asp-page="/Products" asp-route-Currentpage="@(Model.PageNum-1)">Previous</a></li>
+                }
+                else
+                {
+                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                }
+                <li class="page-item"><a class="page-link">@Model.PageNum</a></li>
+                @if (Model.Property.Count == Model.EPP)
+                {
+                    <li class="page-item"><a class="page-link" asp-page="/Products" asp-route-Currentpage="@(Model.PageNum+1)">Next</a></li>
+                }
+                else
+                {
+                    <li class="page-item disabled"><a class="page-link">Next</a></li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

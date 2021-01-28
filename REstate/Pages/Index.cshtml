@@ -19,14 +19,14 @@
             <form method="post">
                 <div class="form-row">
                     <div class="col-md-3">
-                        <select class="form-control" asp-items="@Html.GetEnumSelectList<REstate.Models.SaleType>()" asp-for="stype" type="text" name="Search" value="" placeholder="Rechercher ....."></select>
+                        @Html.DropDownList("stype",Html.GetEnumSelectList<REstate.Models.SaleType>(), new { @class = "form-control" })
                     </div>
                     <div class="col-md-3 mt-md-0 mt-2">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-home"></i></div>
                             </div>
-                            <select asp-for="ptype" asp-items="@Html.GetEnumSelectList<REstate.Models.PropertyType>()" class="form-control" placeholder="Type"></select>
+                            @Html.DropDownList("ptype", Html.GetEnumSelectList<REstate.Models.PropertyType>(), new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="col-md-3 mt-md-0 mt-2">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 mt-md-0 mt-2">
-                        <input class="btn btn-outline-primary w-100" type="submit" name="Seach" value="Search" />
+                        <input class="btn btn-outline-primary w-100" type="submit" value="Recherche" />
                     </div>
                 </div>
             </form>
@@ -51,19 +51,19 @@
 <div class="container py-3 mt-5 mb-5">
     <h3>Dernière publication</h3>
     <div class="row">
-        @for (int i = 0; i < 9; i++)
+        @foreach(var item in Model.Properties)
         {
             <div class="col-md-4 col-sm-6">
                 <a href="#"class="m-2" style="text-decoration:none">
                     <div class="shadow">
-                        <div class="bg-dark rounded-top" style="background-image:url('images/prop.png');background-position:center;height:14em;background-size:cover;width:100%">
+                        <div class="bg-dark rounded-top" style="background-image:url('@item.MainThumbnail');background-position:center;height:14em;background-size:cover;width:100%">
                             <div class="h-100 w-100 px-3 py-2" style="display:flex;flex-direction:column;">
-                                <div class="mb-auto"><span class="badge badge-success p-2">Rent</span></div>
-                                <div><span class="badge badge-info p-2">1.2 Milliard DA</span></div>
+                                <div class="mb-auto"><span class="badge badge-success p-2">@item.SaleType - @item.PaymentDuration</span></div>
+                                <div><span class="badge badge-info p-2">@item.Price @item.PriceAmmount / @item.PaymentDuration</span></div>
                             </div>
                         </div>
                         <div class="rounded-bottom text-white px-3 py-2" style="background:rgba(0, 54, 217, 0.67);">
-                            Bir El Djir, Oran, Algeria
+                            @item.Adresse
                         </div>
                     </div>
                 </a>

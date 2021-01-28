@@ -5,164 +5,62 @@
     ViewData["Title"] = "List";
 }
 
-<h1>List</h1>
+<div class="container">
+    <div class="row justify-content-between m-0">
+        @foreach (var item in Model.Property)
+        {
+            <div class="col-md-6 p-1">
+                <a href="#" class="m-2 mx-3" style="text-decoration:none">
+                    <div class="shadow row m-1">
+                        <div class="bg-dark col-lg-6 p-0" style="background-image:url('@item.MainThumbnail');background-position:center;height:17em;background-size:cover;width:100%">
+                            <div class="h-100 w-100 p-2" style="display:flex;flex-direction:column;">
+                                <div class="mb-auto"><span class="rounded-0 badge badge-success p-2">@item.SaleType - @item.propertyType</span></div>
+                                <div><span class="rounded-0 badge badge-info p-2">@item.Price @item.PriceAmmount / @item.PaymentDuration</span></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 text-dark px-2 py-2" style="background:rgba(256,256, 256, 0.67);">
+                            <h5 class="font-weight-bold">@item.Title</h5>
+                            <small>@item.Adresse</small>
+                            <hr class="my-2" />
+                            <div class="row m-0">
+                                <div class="col p-2">
+                                    <p><i class="fas fa-bed"></i> @item.Bedrooms</p>
+                                </div>
+                                <div class="col p-2">
+                                    <p><i class="fas fa-bath"></i> @item.Bathrooms</p>
+                                </div>
+                                <div class="col p-2">
+                                    <p><i class="fas fa-ruler"></i> @item.Surface m&sup2;</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].PrivatePost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Etages)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].SaleType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].DateAdded)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].PriceAmmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].PaymentDuration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Bedrooms)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Bathrooms)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].WashRooms)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Surface)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Adresse)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Furniture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Jardain)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].TransportProche)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Parking)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Climatisation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].ConnectionInternet)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Security)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Garage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].Ascenceur)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Property[0].MainThumbnail)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Property) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrivatePost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Etages)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SaleType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateAdded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriceAmmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentDuration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bedrooms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bathrooms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WashRooms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Surface)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adresse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Furniture)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Jardain)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransportProche)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Parking)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Climatisation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConnectionInternet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Security)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Garage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ascenceur)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MainThumbnail)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="mt-4 pt-2 pb-4">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            @if (Model.PageNum != 0)
+            {
+                <li class="page-item"><a class="page-link" asp-page="/Products" asp-route-Currentpage="@(Model.PageNum-1)">Previous</a></li>
+            }
+            else
+            {
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            }
+            <li class="page-item"><a class="page-link">@Model.PageNum</a></li>
+            @if (Model.Property.Count == Model.EPP)
+            {
+                <li class="page-item"><a class="page-link" asp-page="/Products" asp-route-Currentpage="@(Model.PageNum+1)">Next</a></li>
+            }
+            else
+            {
+                <li class="page-item disabled"><a class="page-link">Next</a></li>
+            }
+        </ul>
+    </nav>
+</div>
