@@ -20,22 +20,17 @@
                     @Html.DisplayNameFor(model => model.Property[0].Title)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Property[0].propertyType)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Property[0].Etages)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Property[0].SaleType)
+                    @Html.DisplayNameFor(model => model.Property[0].SaleType) - 
+                    @Html.DisplayNameFor(model => model.Property[0].Adresse)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Property[0].Price)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Property[0].Surface)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Property[0].Adresse)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Property[0].MainThumbnail)
@@ -54,13 +49,12 @@
                         @Html.DisplayFor(modelItem => item.Title)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.propertyType)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Etages)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.SaleType)
+                        @Html.DisplayFor(modelItem => item.propertyType) a 
+                        @Html.DisplayFor(modelItem => item.Adresse)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Price)
@@ -71,14 +65,12 @@
                         @Html.DisplayFor(modelItem => item.Surface)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Adresse)
-                    </td>
-                    <td>
                         <img src="@item.MainThumbnail" height="64" />
                     </td>
                     <td>
                         <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
-                        <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.ID">Details</a> 
+                        <a class="btn btn-warning" asp-page="./AddImages" asp-route-id="@item.ID">Modify Images</a>
+                        <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.ID">Details</a>
                         <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
                     </td>
                 </tr>

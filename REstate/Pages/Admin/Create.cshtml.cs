@@ -40,7 +40,7 @@ namespace REstate.Pages.Admin
             _context.Property.Add(Property);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./AddImages",new {id=Property.ID});
         }
     }
 }
