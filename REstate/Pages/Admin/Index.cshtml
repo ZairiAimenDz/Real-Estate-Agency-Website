@@ -14,9 +14,6 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Property[0].PrivatePost)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Property[0].Title)
                 </th>
                 <th>
@@ -43,9 +40,6 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PrivatePost)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Title)
                     </td>
                     <td>
@@ -68,10 +62,10 @@
                         <img src="@item.MainThumbnail" height="64" />
                     </td>
                     <td>
-                        <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
-                        <a class="btn btn-warning" asp-page="./AddImages" asp-route-id="@item.ID">Modify Images</a>
-                        <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.ID">Details</a>
-                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        <a class="btn btn-warning mb-1" asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                        <a class="btn btn-warning mb-1" asp-page="./AddImages" asp-route-id="@item.ID">Modify Images</a>
+                        <a class="btn btn-info mb-1" asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                        <a class="btn btn-danger mb-1" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
                     </td>
                 </tr>
             }

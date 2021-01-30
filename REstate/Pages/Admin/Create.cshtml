@@ -8,14 +8,8 @@
 <div class="container">
     <h1>Create</h1>
     <div class="px-2 py-3">
-        <form method="post">
+        <form enctype="multipart/form-data"  method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Property.PrivatePost" /> @Html.DisplayNameFor(model => model.Property.PrivatePost)
-                </label>
-            </div>
             <div class="row">
                 <div class="col-lg-9 form-group">
                     <label asp-for="Property.Title" class="control-label"></label>

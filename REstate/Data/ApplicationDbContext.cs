@@ -14,5 +14,6 @@ namespace REstate.Data
         {
         }
         public DbSet<REstate.Models.Property> Property { get; set; }
+        public DbSet<REstate.Models.PropertyImage> PropertyImage { get; set; }
     }
 }

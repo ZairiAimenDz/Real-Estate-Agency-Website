@@ -34,7 +34,7 @@ namespace REstate.Pages
 
         public async Task OnGetAsync()
         {
-            var querry = _context.Property.Where(p=>!p.PrivatePost);
+            var querry = _context.Property.Where(p=>!p.vendu);
             if(stype > 0)
             {
                 querry = querry.Where(p => p.SaleType == stype);

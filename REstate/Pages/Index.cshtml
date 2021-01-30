@@ -53,16 +53,16 @@
     <div class="row">
         @foreach(var item in Model.Properties)
         {
-            <div class="col-md-4 col-sm-6">
-                <a href="#"class="m-2" style="text-decoration:none">
+            <div class="col-lg-4 col-md-6">
+                <a asp-page="./Details" asp-route-id="@item.ID" class="m-2" style="text-decoration:none">
                     <div class="shadow">
-                        <div class="bg-dark rounded-top" style="background-image:url('@item.MainThumbnail');background-position:center;height:14em;background-size:cover;width:100%">
+                        <div class="bg-dark" style="background-image:url('@item.MainThumbnail');background-position:center;height:14em;background-size:cover;width:100%">
                             <div class="h-100 w-100 px-3 py-2" style="display:flex;flex-direction:column;">
                                 <div class="mb-auto"><span class="badge badge-success p-2">@item.SaleType - @item.PaymentDuration</span></div>
                                 <div><span class="badge badge-info p-2">@item.Price @item.PriceAmmount / @item.PaymentDuration</span></div>
                             </div>
                         </div>
-                        <div class="rounded-bottom text-white px-3 py-2" style="background:rgba(0, 54, 217, 0.67);">
+                        <div class="rounded-bottom text-dark px-3 py-2">
                             @item.Adresse
                         </div>
                     </div>

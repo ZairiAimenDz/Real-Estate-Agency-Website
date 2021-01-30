@@ -1,14 +1,62 @@
-﻿@if(property is not null)
+﻿@inject ApplicationDbContext context
+@inject IImageService service
+
+<h3>Add Images To The Post ( Images Are Automatically Added When You Choose Them ):</h3>
+
+@if (property is not null)
 {
+    <p><b>@property.Title</b></p>
+    <p>
+        Use only Files That Are Smaller Than 4MB.
+        <InputFile OnChange="@OnInputFileChange" multiple />
+    </p>
+    <div class="row">
+        @foreach (var item in images)
+        {
+            <div class="col-md-4" style="background-image:url('@item.ImageFile');background-position:center;height:17em;background-size:cover;width:100%">
+            </div>
+        }
+    </div>
 
 }
 else
 {
-    <h3>We are Getting Things Ready</h3>
+    <p>We are Getting Things Ready</p>
 }
+
 @code {
     [Parameter]
     public Guid ForProp { get; set; }
 
     public Property property;
+    public List<PropertyImage> images = new List<PropertyImage>();
+
+    protected override void OnInitialized()
+    {
+        property = context.Property.Find(ForProp);
+        images = context.PropertyImage.Where(i => i.PropertyID == ForProp).ToList();
+    }
+
+    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        var format = "image/png";
+
+        foreach (var imageFile in e.GetMultipleFiles())
+        {
+            var resizedImageFile = await imageFile.RequestImageFileAsync(format,
+                1000, 1000);
+            try {
+                var file = await service.UploadImage(resizedImageFile);
+                var propimg = new PropertyImage { ImageFile = file, Property = property, PropertyID = ForProp };
+                context.PropertyImage.Add(propimg);
+                await context.SaveChangesAsync();
+                images.Add(propimg);
+            }
+            catch
+            {
+                Console.WriteLine("File Too Big");
+            }
+        }
+    }
+
 }

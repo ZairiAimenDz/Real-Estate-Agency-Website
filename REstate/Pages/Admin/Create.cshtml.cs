@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using REstate.Data;
 using REstate.Models;
+using REstate.Services;
 
 namespace REstate.Pages.Admin
 {
@@ -15,10 +16,12 @@ namespace REstate.Pages.Admin
     public class CreateModel : PageModel
     {
         private readonly REstate.Data.ApplicationDbContext _context;
+        private readonly IImageService imgservice;
 
-        public CreateModel(REstate.Data.ApplicationDbContext context)
+        public CreateModel(REstate.Data.ApplicationDbContext context,IImageService imgservice)
         {
             _context = context;
+            this.imgservice = imgservice;
         }
 
         public IActionResult OnGet()
@@ -37,6 +40,7 @@ namespace REstate.Pages.Admin
                 return Page();
             }
             Property.DateAdded = DateTime.Now;
+            Property.MainThumbnail = imgservice.UploadImage(Property.ThumbnailFile);
             _context.Property.Add(Property);
             await _context.SaveChangesAsync();
 

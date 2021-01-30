@@ -10,12 +10,12 @@
         @foreach (var item in Model.Property)
         {
             <div class="col-md-6 p-1">
-                <a href="#" class="" style="text-decoration:none">
+                <a asp-page="./Details" asp-route-id="@item.ID" class="" style="text-decoration:none">
                     <div class="shadow row m-1">
                         <div class="bg-dark col-lg-6 p-0" style="background-image:url('@item.MainThumbnail');background-position:center;height:17em;background-size:cover;width:100%">
                             <div class="h-100 w-100 p-2" style="display:flex;flex-direction:column;">
                                 <div class="mb-auto"><span class="rounded-0 badge badge-success p-2">@item.SaleType - @item.propertyType</span></div>
-                                <div><span class="rounded-0 badge badge-info p-2">@item.Price @item.PriceAmmount / @item.PaymentDuration</span></div>
+                                <div><span class="rounded-0 badge badge-warning p-2">@item.Price @item.PriceAmmount / @item.PaymentDuration</span></div>
                             </div>
                         </div>
                         <div class="col-lg-6 text-dark px-2 py-2" style="background:rgba(256,256, 256, 0.67);">

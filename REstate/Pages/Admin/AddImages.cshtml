@@ -5,7 +5,9 @@
     ViewData["Title"] = "Edit Images";
 }
 
-
+<div class="container mt-2">
+    <component type="typeof(REstate.Components.AddImages)" param-ForProp="@Model.Property.ID" render-mode="Server" />
+</div>
 
 
 @section Scripts {
