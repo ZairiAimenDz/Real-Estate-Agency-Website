@@ -12,7 +12,7 @@ namespace REstate.Models
     {
         [Key]
         public Guid ID { get; set; }
-        [Display(Name ="Post Privee")]
+        [Display(Name ="Vendu")]
         public bool vendu { get; set; }
         [Required]
         [Display(Name ="Titre")]

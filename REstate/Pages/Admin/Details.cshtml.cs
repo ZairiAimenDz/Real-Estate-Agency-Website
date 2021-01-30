@@ -30,7 +30,7 @@ namespace REstate.Pages.Admin
                 return NotFound();
             }
 
-            Property = await _context.Property.FirstOrDefaultAsync(m => m.ID == id);
+            Property = await _context.Property.Include(p=>p.PropertyImages).FirstOrDefaultAsync(m => m.ID == id);
 
             if (Property == null)
             {

@@ -28,11 +28,15 @@ namespace REstate.Pages
                 return NotFound();
             }
 
-            Property = await _context.Property.FirstOrDefaultAsync(m => m.ID == id);
+            Property = await _context.Property.Include(p=>p.PropertyImages).FirstOrDefaultAsync(m => m.ID == id);
 
             if (Property == null)
             {
                 return NotFound();
+            } 
+            if (Property.vendu == true)
+            {
+                return RedirectToPage("/Index");
             }
             return Page();
         }
