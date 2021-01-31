@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using REstate.Data;
 using REstate.Models;
+using REstate.Services;
 
 namespace REstate.Pages.Admin
 {
@@ -16,10 +17,12 @@ namespace REstate.Pages.Admin
     public class EditModel : PageModel
     {
         private readonly REstate.Data.ApplicationDbContext _context;
+        private readonly IImageService service;
 
-        public EditModel(REstate.Data.ApplicationDbContext context)
+        public EditModel(REstate.Data.ApplicationDbContext context,IImageService service)
         {
             _context = context;
+            this.service = service;
         }
 
         [BindProperty]
@@ -49,7 +52,12 @@ namespace REstate.Pages.Admin
             {
                 return Page();
             }
-
+            Property.DateAdded = DateTime.Now;
+            if (Property.ThumbnailFile is not null)
+            {
+                service.DeleteImage(Property.MainThumbnail);
+                Property.MainThumbnail = service.UploadImage(Property.ThumbnailFile);
+            }
             _context.Attach(Property).State = EntityState.Modified;
 
             try

@@ -70,3 +70,14 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.carousel-img{
+    height:90vh;
+}
+
+
+@media (max-width: 767.98px) {
+    .carousel-img{
+        height:50vh;
+    }
+}

@@ -8,13 +8,11 @@
 <div class="container mt-3 mb-3">
     <div id="carouselExampleControls" class="carousel slide" touch="true" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="@Model.Property.MainThumbnail" class="d-block w-100" alt="...">
+            <div class="carousel-item active carousel-img" style="background-image:url('@Model.Property.MainThumbnail');background-position:center;background-size:cover;width:100%">
             </div>
             @foreach (var image in Model.Property.PropertyImages)
             {
-                <div class="carousel-item">
-                    <img src="@image.ImageFile" class="d-block w-100" alt="@image.ImageFile">
+                <div class="carousel-item carousel-img" style="background-image:url('@image.ImageFile');background-position:center;background-size:cover;width:100%">
                 </div>
             }
         </div>
@@ -30,16 +28,22 @@
     <div class="mt-5 mb-3">
         <div class="row">
             <div class="col-md-8">
-                <small class="rounded bg-warning text-light px-2 py-1">@Model.Property.SaleType - @Model.Property.propertyType</small>
-                <h2 class="font-weight-bold mt-2">@Model.Property.Title</h2>
+                <span class="rounded font-weight-bold bg-warning text-light px-2 py-1">@Model.Property.SaleType - @Model.Property.propertyType</span>
+                <h2 class="font-weight-bold mt-2 mb-0">@Model.Property.Title</h2>
                 <p>@Model.Property.Adresse</p>
-                <p><i class="fas fa-ruler"></i> Superficie : @Model.Property.Surface M&sup2;</p>
+                <p class="mb-0"><i class="fas fa-ruler"></i> Superficie : @Model.Property.Surface M&sup2;</p>
                 <p><i class="fas fa-bed"></i> Chambres : @Model.Property.Bedrooms - | - <i class="fas fa-bath"></i> Douches : @Model.Property.Bathrooms - | - <i class="fas fa-toilet"></i> Toilets : @Model.Property.WashRooms</p>
             </div>
             <div class="col-md-4 rounded" style="display: flex; flex-direction: column; justify-content: center;">
                 <div class="w-100" style="align-self:center">
                     <h4 class="font-weight-bold text-center text-dark border-warning p-2" style="border:solid 4px;border-radius:1em;">@Model.Property.Price @Model.Property.PriceAmmount / @Model.Property.PaymentDuration</h4>
                 </div>
+            </div>
+        </div>
+        <div class="mt-5">
+            <h4 class="font-weight-bold">Description</h4>
+            <div>
+                @Html.Raw(Model.Property.Description)
             </div>
         </div>
         <div class="p-2 mt-5 mb-5 shadow rounded-lg">
@@ -112,6 +116,6 @@
         </div>
     </div>
     <div>
-        <a class="btn btn-secondary" asp-page="/List">Back To The Main List</a>
+        <a class="btn btn-secondary" asp-page="/List">Retoruner A La Liste</a>
     </div>
 </div>

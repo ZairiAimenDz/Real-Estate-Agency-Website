@@ -17,6 +17,8 @@ namespace REstate.Models
         [Required]
         [Display(Name ="Titre")]
         public string Title { get; set; }
+        [Display(Name ="Description")]
+        public string Description { get; set; }
         [Display(Name ="Type De Propriete")]
         public PropertyType propertyType { get; set; }
 

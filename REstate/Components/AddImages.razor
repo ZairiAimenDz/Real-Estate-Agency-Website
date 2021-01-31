@@ -14,6 +14,7 @@
         @foreach (var item in images)
         {
             <div class="col-md-4" style="background-image:url('@item.ImageFile');background-position:center;height:17em;background-size:cover;width:100%">
+                <button @onclick="()=>DeleteFile(item.ImageFile)" class="btn btn-danger"><i class="fas fa-times fa-2x"></i></button>
             </div>
         }
     </div>
@@ -35,6 +36,16 @@ else
     {
         property = context.Property.Find(ForProp);
         images = context.PropertyImage.Where(i => i.PropertyID == ForProp).ToList();
+    }
+
+
+    private async void DeleteFile(string file)
+    {
+        service.DeleteImage(file);
+        context.PropertyImage.Remove(images.Where(p=>p.ImageFile == file).FirstOrDefault());
+        await context.SaveChangesAsync();
+        images.Remove(images.Where(p => p.ImageFile == file).FirstOrDefault());
+        OnInitialized();
     }
 
     private async Task OnInputFileChange(InputFileChangeEventArgs e)

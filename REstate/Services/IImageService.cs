@@ -15,6 +15,7 @@ namespace REstate.Services
         string UploadImage(IFormFile file);
         Task<string> UploadImage(IBrowserFile bfile);
         void ReplaceImage(IFormFile file, string existingfile);
+        bool DeleteImage(string file);
     }
     public class ImageService : IImageService
     {
@@ -24,12 +25,25 @@ namespace REstate.Services
         {
             this.webHostEnvironment = webHostEnvironment;
         }
+        public bool DeleteImage(string file)
+        {                
+            string uploadsfile = Path.Combine(webHostEnvironment.WebRootPath, file);
+            try { 
+                if(File.Exists(uploadsfile))
+                    File.Delete(uploadsfile);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public void ReplaceImage(IFormFile file, string existingfile)
         {
-            if (file is not null)
+            if (file.Name is not null)
             {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "image");
-                string filePath = Path.Combine(uploadsFolder, existingfile);
+                string filePath = Path.Combine(webHostEnvironment.WebRootPath, existingfile);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     file.CopyTo(fileStream);

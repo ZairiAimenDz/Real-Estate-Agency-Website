@@ -47,7 +47,7 @@ namespace REstate.Pages
             {
                 querry = querry.Where(p => p.Bedrooms >= Bedrooms);
             }
-            Property = await querry.OrderBy(p=>p.DateAdded).Skip(12*PageNum).Take(EPP).ToListAsync();
+            Property = await querry.OrderByDescending(p=>p.DateAdded).Skip(12*PageNum).Take(EPP).ToListAsync();
         }
     }
 }

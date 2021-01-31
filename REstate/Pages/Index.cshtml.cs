@@ -32,7 +32,7 @@ namespace REstate.Pages
 
         public void OnGet()
         {
-            Properties = context.Property.Where(p=>!p.vendu).OrderByDescending(p => p.DateAdded).Take(9).ToList();
+            Properties = context.Property.OrderByDescending(p => p.DateAdded).Where(p=>!p.vendu).OrderByDescending(p => p.DateAdded).Take(9).ToList();
         }
 
         public IActionResult OnPost()
