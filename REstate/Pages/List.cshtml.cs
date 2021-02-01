@@ -19,6 +19,9 @@ namespace REstate.Pages
             _context = context;
         }
 
+
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
         [BindProperty(SupportsGet = true)]
         public SaleType stype { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -35,6 +38,10 @@ namespace REstate.Pages
         public async Task OnGetAsync()
         {
             var querry = _context.Property.Where(p=>!p.vendu);
+            if (!string.IsNullOrEmpty(SearchTerm))
+            {
+                querry = querry.Where(p => p.Description.ToLower().Contains(SearchTerm.ToLower()) || p.Title.ToLower().Contains(SearchTerm.ToLower()));
+            }
             if(stype > 0)
             {
                 querry = querry.Where(p => p.SaleType == stype);

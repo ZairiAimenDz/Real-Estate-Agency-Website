@@ -5,8 +5,31 @@
     ViewData["Title"] = "List";
 }
 
-<div class="container">
-    <div class="row justify-content-between m-0">
+<div class="container mt-5">
+    <form class="mb-3" method="get">
+        <h5 class="font-weight-bolder">Filtrer La Recherche</h5>
+        <div class="row mb-2">
+            <div class="col-md-6 mt-md-0 mt-2">
+                <small>Term De Recherche</small>
+                <input type="text" asp-for="SearchTerm" class="form-control" placeholder="Term De Recherche ....">
+            </div>
+            <div class="col-md-2 mt-md-0 mt-2">
+                <small>Achat Ou Vente</small>
+                @Html.DropDownList("stype", Html.GetEnumSelectList<REstate.Models.SaleType>(), new { @class = "form-control" })
+            </div>
+            <div class="col-md-2 mt-md-0 mt-2">
+                <small>Type De immobiliers</small>
+                @Html.DropDownList("ptype", Html.GetEnumSelectList<REstate.Models.PropertyType>(), new { @class = "form-control" })
+            </div>
+            <div class="col-md-2 mt-md-0 mt-2">
+                <small>Nbr Chambres</small>
+                <input asp-for="Bedrooms" type="number" min="0" class="form-control" placeholder="NbChambre">
+            </div>
+        </div>
+        <input class="btn btn-outline-primary w-25" type="submit" value="Rechercher" />
+    </form>
+    <hr class="my-4 w-75" />
+    <div class="row justify-content-between m-0 mt-2">
         @foreach (var item in Model.Property)
         {
             <div class="col-md-6 p-1">

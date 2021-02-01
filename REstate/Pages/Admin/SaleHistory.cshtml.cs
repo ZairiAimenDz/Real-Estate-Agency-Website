@@ -12,11 +12,11 @@ using REstate.Models;
 namespace REstate.Pages.Admin
 {
     [Authorize(Roles = "Admin")]
-    public class IndexModel : PageModel
+    public class SaleHistory : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public IndexModel(ApplicationDbContext context)
+        public SaleHistory(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -30,7 +30,7 @@ namespace REstate.Pages.Admin
 
         public async Task OnGetAsync()
         {
-            Property = await _context.Property.OrderByDescending(p=>p.DateAdded).Where(p=>!p.vendu).Skip(12*PageNum).Take(EPP).ToListAsync();
+            Property = await _context.Property.Where(p=>p.vendu).OrderByDescending(p=>p.DateAdded).Skip(12*PageNum).Take(EPP).ToListAsync();
         }
     }
 }

@@ -30,7 +30,7 @@
             </div>
             <div class="col-lg-4 form-group">
                 <label asp-for="Property.Surface" class="control-label"></label>
-                <input asp-for="Property.Surface" class="form-control" />
+                <input asp-for="Property.Surface" min="0" class="form-control" />
                 <span asp-validation-for="Property.Surface" class="text-danger"></span>
             </div>
             <div class="col-lg-4 form-group">
@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col-lg-4 form-group">
                 <label asp-for="Property.Price" class="control-label"></label>
-                <input asp-for="Property.Price" class="form-control" />
+                <input asp-for="Property.Price" min="0" class="form-control" />
                 <span asp-validation-for="Property.Price" class="text-danger"></span>
             </div>
             <div class="col-lg-4 form-group">
@@ -59,17 +59,17 @@
         <div class="row">
             <div class="col-lg-4 form-group">
                 <label asp-for="Property.Bedrooms" class="control-label"><i class="fas fa-bed"></i></label>
-                <input asp-for="Property.Bedrooms" class="form-control" />
+                <input asp-for="Property.Bedrooms" min="0" class="form-control" />
                 <span asp-validation-for="Property.Bedrooms" class="text-danger"></span>
             </div>
             <div class="col-lg-4 form-group">
                 <label asp-for="Property.Bathrooms" class="control-label"><i class="fas fa-bath"></i></label>
-                <input asp-for="Property.Bathrooms" class="form-control" />
+                <input asp-for="Property.Bathrooms" min="0" class="form-control" />
                 <span asp-validation-for="Property.Bathrooms" class="text-danger"></span>
             </div>
             <div class="col-lg-4 form-group">
                 <label asp-for="Property.WashRooms" class="control-label"><i class="fas fa-toilet"></i></label>
-                <input asp-for="Property.WashRooms" class="form-control" />
+                <input asp-for="Property.WashRooms" min="0" class="form-control" />
                 <span asp-validation-for="Property.WashRooms" class="text-danger"></span>
             </div>
         </div>

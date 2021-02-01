@@ -1,7 +1,8 @@
 ﻿@inject ApplicationDbContext context
 @inject IImageService service
+@inject NavigationManager navm
 
-<h3>Add Images To The Post ( Images Are Automatically Added When You Choose Them ):</h3>
+<h3>Upload Images:</h3>
 
 @if (property is not null)
 {
@@ -14,7 +15,7 @@
         @foreach (var item in images)
         {
             <div class="col-md-4" style="background-image:url('@item.ImageFile');background-position:center;height:17em;background-size:cover;width:100%">
-                <button @onclick="()=>DeleteFile(item.ImageFile)" class="btn btn-danger"><i class="fas fa-times fa-2x"></i></button>
+                <button @onclick="DeleteFile(item.ImageFile)" class="btn btn-danger"><i class="fas fa-times fa-2x"></i></button>
             </div>
         }
     </div>
@@ -25,6 +26,7 @@ else
     <p>We are Getting Things Ready</p>
 }
 
+<button class="btn btn-primary" @onclick="()=>GoHome()">Save</button>
 @code {
     [Parameter]
     public Guid ForProp { get; set; }
@@ -70,4 +72,8 @@ else
         }
     }
 
+    private void GoHome()
+    {
+        navm.NavigateTo("/Admin/Index", forceLoad: true);
+    }
 }
