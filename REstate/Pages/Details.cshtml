@@ -28,6 +28,10 @@
     <div class="mt-5 mb-3">
         <div class="row">
             <div class="col-md-8">
+                @if (Model.Property.vendu)
+                {
+                    <p class="bg-danger p-2 rounded">Vendu !</p>
+                }
                 <span class="rounded font-weight-bold bg-warning text-light px-2 py-1">@Model.Property.SaleType - @Model.Property.propertyType</span>
                 <h2 class="font-weight-bold mt-2 mb-0">@Model.Property.Title</h2>
                 <p>@Model.Property.Adresse</p>

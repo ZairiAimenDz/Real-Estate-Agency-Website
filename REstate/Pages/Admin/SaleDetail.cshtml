@@ -1,0 +1,61 @@
+﻿@page
+@model REstate.Pages.Admin.SaleDetailModel
+
+@{
+    ViewData["Title"] = "SaleDetail";
+}
+<div class="container">
+    <h1>SaleDetail</h1>
+
+    <div>
+        <h4>Vente</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Vente.Nom)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Vente.Nom)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Vente.Prenom)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Vente.Prenom)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Vente.IdenCard)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Vente.IdenCard)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Vente.Adress)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Vente.Adress)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Vente.NumeroDeTlf)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Vente.NumeroDeTlf)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Vente.DateAchat)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Vente.DateAchat)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Vente.Property)
+            </dt>
+            <dd class="col-sm-10">
+                <a asp-page="Details" asp-route-id="@Model.Vente.Property.ID">Regarder L'Annonce</a>
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./SaleHistory">Back to List</a>
+    </div>
+</div>

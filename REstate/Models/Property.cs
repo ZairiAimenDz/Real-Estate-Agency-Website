@@ -63,6 +63,7 @@ namespace REstate.Models
         [NotMapped]
         public IFormFile ThumbnailFile{ get; set; }
         public List<PropertyImage> PropertyImages { get; set; } = new List<PropertyImage>();
+        public Vente Vente { get; set; }
     }
 
     public enum PropertyType

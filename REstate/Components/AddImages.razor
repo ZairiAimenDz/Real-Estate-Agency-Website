@@ -15,7 +15,7 @@
         @foreach (var item in images)
         {
             <div class="col-md-4" style="background-image:url('@item.ImageFile');background-position:center;height:17em;background-size:cover;width:100%">
-                <button @onclick="DeleteFile(item.ImageFile)" class="btn btn-danger"><i class="fas fa-times fa-2x"></i></button>
+                <button @onclick="()=>DeleteFile(item.ImageFile)" class="btn btn-danger"><i class="fas fa-times fa-2x"></i></button>
             </div>
         }
     </div>

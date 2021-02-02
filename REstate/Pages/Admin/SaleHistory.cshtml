@@ -1,77 +1,71 @@
 ﻿@page
-@model REstate.Pages.Admin.SaleHistory
+@model REstate.Pages.Admin.SaleHistoryModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Histoire Des Ventes";
 }
 <div class="container">
-    <h1>List D'Annonces</h1>
+    <h1>Histoire Des Ventes</h1>
 
-    <p>
-        <a class="btn btn-outline-primary mx-2" asp-page="Create">Cree Un nouvelle Annonce</a>
-    </p>
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Property[0].Title)
+                    @Html.DisplayNameFor(model => model.Vente[0].Nom)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Property[0].Etages)
+                    @Html.DisplayNameFor(model => model.Vente[0].Prenom)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Property[0].SaleType) - 
-                    @Html.DisplayNameFor(model => model.Property[0].Adresse)
+                    @Html.DisplayNameFor(model => model.Vente[0].IdenCard)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Property[0].Price)
+                    @Html.DisplayNameFor(model => model.Vente[0].Adress)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Property[0].Surface)
+                    @Html.DisplayNameFor(model => model.Vente[0].NumeroDeTlf)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Property[0].MainThumbnail)
+                    @Html.DisplayNameFor(model => model.Vente[0].DateAchat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vente[0].Property)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Property)
+            @foreach (var item in Model.Vente)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Title)
+                        @Html.DisplayFor(modelItem => item.Nom)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Etages)
+                        @Html.DisplayFor(modelItem => item.Prenom)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.SaleType)
-                        @Html.DisplayFor(modelItem => item.propertyType) a 
-                        @Html.DisplayFor(modelItem => item.Adresse)
+                        @Html.DisplayFor(modelItem => item.IdenCard)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                        @Html.DisplayFor(modelItem => item.PriceAmmount)
-                        @Html.DisplayFor(modelItem => item.PaymentDuration)
+                        @Html.DisplayFor(modelItem => item.Adress)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Surface)
+                        @Html.DisplayFor(modelItem => item.NumeroDeTlf)
                     </td>
                     <td>
-                        <img src="@item.MainThumbnail" height="64" />
+                        @Html.DisplayFor(modelItem => item.DateAchat)
                     </td>
                     <td>
-                        <a class="btn btn-warning mb-1" asp-page="./Edit" asp-route-id="@item.ID">Edition</a>
-                        <a class="btn btn-warning mb-1" asp-page="./AddImages" asp-route-id="@item.ID">Modification D'Images</a>
-                        <a class="btn btn-info mb-1" asp-page="./Details" asp-route-id="@item.ID">Details</a>
-                        <a class="btn btn-danger mb-1" asp-page="./Delete" asp-route-id="@item.ID">Vendu Or Supprimer</a>
+                        @Html.DisplayFor(modelItem => item.Property.Adresse)
+                    </td>
+                    <td>
+                        <a asp-page="./SaleDetail" asp-route-id="@item.ID">Details</a> |
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-
 
     <div class="mt-4 pt-2 pb-4">
         <nav aria-label="Page navigation example">
@@ -85,7 +79,7 @@
                     <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
                 }
                 <li class="page-item"><a class="page-link">@Model.PageNum</a></li>
-                @if (Model.Property.Count == Model.EPP)
+                @if (Model.Vente.Count == Model.EPP)
                 {
                     <li class="page-item"><a class="page-link" asp-page="/Products" asp-route-Currentpage="@(Model.PageNum+1)">Next</a></li>
                 }

@@ -14,5 +14,7 @@ namespace REstate.Models
         public string Adress { get; set; }
         public string NumeroDeTlf { get; set; }
         public DateTime DateAchat { get; set; }
+        public Guid PropertyID { get; set; }
+        public Property Property { get; set; }
     }
 }
